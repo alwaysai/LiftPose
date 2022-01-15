@@ -10,8 +10,8 @@ Once the alwaysAI tools are installed on your development machine (or edge devic
 
 Create empty directory for app and cd to it
 ```
-mkdir AppDir1
-cd AppDir1
+mkdir LiftPoseDir
+cd LiftPoseDir
 ```
 
 To perform initial configuration of the app:
