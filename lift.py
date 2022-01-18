@@ -80,7 +80,7 @@ class CheckPosture:
         return self.scale
 
     def knees_bent(self):
-        if [self.key_points['Right Shoulder'].x != -1 and self.key_points['Right Knee'].x != -1 and self.key_points['Right Hip'].x != -1 and int(self.key_points['Right Shoulder'].x) in range(int(self.key_points['Right Hip'].x + (self.scale * 30)), int(self.key_points['Right Hip'].x + (self.scale * 500))) and int(self.key_points['Right Knee'].x) in range(int(self.key_points['Right Hip'].x),int(self.key_points['Right Hip'].x + (self.scale * 75)))] or [self.key_points['Left Shoulder'].x != -1 and self.key_points['Left Knee'].x != -1 and self.key_points['Left Hip'].x != -1 and int(self.key_points['Left Shoulder'].x) in range(int(self.key_points['Left Hip'].x + (self.scale * 30)), int(self.key_points['Left Hip'].x + (self.scale * 500))) and int(self.key_points['Left Knee'].x) in range(int(self.key_points['Left Hip'].x),int(self.key_points['Left Hip'].x + (self.scale * 75)))]:
+        if self.key_points['Right Shoulder'].x != -1 and self.key_points['Right Knee'].x != -1 and self.key_points['Right Hip'].x != -1 and int(self.key_points['Right Shoulder'].x) in range(int(self.key_points['Right Hip'].x + (self.scale * 30)), int(self.key_points['Right Hip'].x + (self.scale * 500))) and int(self.key_points['Right Knee'].x) in range(int(self.key_points['Right Hip'].x),int(self.key_points['Right Hip'].x + (self.scale * 75))):
             return (False)
         return (True)
 
