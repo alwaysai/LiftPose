@@ -1,24 +1,23 @@
-import subprocess
 import os
 import json
-import edgeiq
 import time
-from timeit import default_timer as timer
+
+import edgeiq
+import simpleaudio as sa
+
 from lift import CheckPosture
 
-
-subprocess.check_call(['python','-m','pip','install','simpleaudio==1.0.4'])
-import simpleaudio as sa
 
 CONFIG_FILE = "config.json"
 SCALE = "scale"
 
 def load_json(filepath):
-    if os.path.exists(filepath) == False:
+    if not os.path.exists(filepath):
         raise Exception('File at {} does not exist'.format(filepath))
 
     with open(filepath) as data:
         return json.load(data)
+
 
 def main():
     config = load_json(CONFIG_FILE)
@@ -39,7 +38,7 @@ def main():
     fps = edgeiq.FPS()
 
     try:
-        with edgeiq.WebcamVideoStream(cam=1) as video_stream, \
+        with edgeiq.WebcamVideoStream(cam=0) as video_stream, \
                 edgeiq.Streamer() as streamer, write_context as video_writer:
             # Allow Webcam to warm up
             # print(f'time pre-sleep={time.time()-stime}')
@@ -55,7 +54,7 @@ def main():
                 text = ["Model: {}".format(pose_estimator.model_id)]
                 text.append(
                         "Inference time: {:1.3f} s".format(results.duration))
-                
+
                 for ind, pose in enumerate(results.poses):
                     if ind > 0:
                         continue
